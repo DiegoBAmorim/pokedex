@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
-import { Card } from '../../components/Card';
-import Menu from '../../components/Menu';
-import PokemonList from '../../components/PokemonList';
+
+import { Card, Pokemon, PokemonType } from '../../components/Card';
+
+import pokeballHeader from '../../assets/items/pokeball.png';
 import api from '../../services/api';
-import { Container, List } from './styles';
-import { Pokemon } from '../../components/Card';
-import { PokemonType } from '../../components/Card';
-import { FadeAnimation } from '../../components/FadeAnimation';
+
+import { Container, Header, List, Title } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 type Request = {
   id: number;
@@ -17,10 +16,15 @@ type Request = {
 const Home: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
+  const { navigate } = useNavigation();
 
   useEffect(() => {
     getPokemon();
   }, []);
+
+  const navigationPage = (pokemonId: number) => {
+    navigate('Details', { pokemonId });
+  };
 
   const getPokemon = async () => {
     const response = await api.get('/pokemon');
@@ -53,12 +57,17 @@ const Home: React.FC = () => {
   return (
     <Container>
       <List
+        ListHeaderComponent={
+          <>
+            <Header source={pokeballHeader} />
+            <Title>Pokedex</Title>
+          </>
+        }
         data={pokemons}
-        keyExtractor={(pokemon: any) => String(pokemon.id.toString())}
+        contentContainerStyle={{ paddingHorizontal: 20 }}
+        keyExtractor={(pokemon: any) => String(pokemon.name)}
         renderItem={({ item }: any) => (
-          <FadeAnimation>
-            <Card data={item} />
-          </FadeAnimation>
+          <Card data={item} onPress={() => navigationPage(item.id)} />
         )}
       />
     </Container>

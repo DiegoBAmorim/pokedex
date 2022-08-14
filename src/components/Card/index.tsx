@@ -15,6 +15,8 @@ import {
 
 import dotsImage from '../../assets/items/dots.png';
 import pokeballImage from '../../assets/items/pokeballCard.png';
+import { FadeAnimation } from '../FadeAnimation';
+import { useNavigation } from '@react-navigation/native';
 
 export type PokemonType = {
   type: {
@@ -33,7 +35,7 @@ type Props = {
   data: Pokemon;
 } & TouchableOpacityProps;
 
-export function Card({ data, ...rest }: Props) {
+export const Card: React.FC<Props> = ({ data, ...rest }) => {
   return (
     <Container type={data.types[0].type.name} {...rest}>
       <LeftSide>
@@ -49,13 +51,15 @@ export function Card({ data, ...rest }: Props) {
         </PokemonContentType>
       </LeftSide>
       <RightSide>
-        <PokeballDetail source={pokeballImage} />
-        <PokemonImage
-          source={{
-            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
-          }}
-        />
+        <FadeAnimation>
+          <PokeballDetail source={pokeballImage} />
+          <PokemonImage
+            source={{
+              uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+            }}
+          />
+        </FadeAnimation>
       </RightSide>
     </Container>
   );
-}
+};

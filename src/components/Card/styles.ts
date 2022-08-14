@@ -10,7 +10,7 @@ export const Container = styled.TouchableOpacity<PokemonType>`
     border-radius: 10px;
     margin-top: 30px;
     flex-direction: row;
-    padding: 20px;
+    padding: 15px;
   `}
 `;
 
@@ -96,5 +96,6 @@ export const PokemonImage = styled.Image`
 
 export const PokeballDetail = styled.Image`
  position: absolute;
- right: -20px;
+ right: -30px;
+ bottom: -10px
 `;
