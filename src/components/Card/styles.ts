@@ -1,11 +1,11 @@
-import styled, {css} from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 type PokemonType = {
-    type: string
+  type: string
 }
 
 export const Container = styled.TouchableOpacity<PokemonType>`
-  ${({theme, type}) => css`
+  ${({ theme, type }) => css`
   background: ${theme.colors.backgroundCard[type]}
     border-radius: 10px;
     margin-top: 30px;
@@ -21,7 +21,7 @@ export const LeftSide = styled.View`
 `;
 
 export const PokemonId = styled.Text`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-weight: bold;
     font-size: 12px;
     line-height: 14px;
@@ -30,7 +30,7 @@ export const PokemonId = styled.Text`
 `;
 
 export const PokemonName = styled.Text`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-weight: bold;
     font-size: 25px;
     line-height: 31px;
@@ -45,7 +45,7 @@ export const PokemonContentType = styled.View`
 `;
 
 export const PokemonType = styled.View<PokemonType>`
-  ${({theme, type}) => css`
+  ${({ theme, type }) => css`
     background: ${theme.colors.boxType[type]};
     padding: 5px;
     width: 65px;
@@ -53,14 +53,14 @@ export const PokemonType = styled.View<PokemonType>`
     border-radius: 3px;
     margin-left: 5px;
     margin-top: 5px;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
   `}
 `;
 
 export const PokemonTypeText = styled.Text`
-   ${({theme, type}) => css`
+   ${({ theme, type }) => css`
    font-weight: 500;
    font-size: 12px;
    line-height: 14px;
