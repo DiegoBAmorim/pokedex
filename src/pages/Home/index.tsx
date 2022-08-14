@@ -5,17 +5,8 @@ import Menu from '../../components/Menu';
 import PokemonList from '../../components/PokemonList';
 import api from '../../services/api';
 import { Container, List } from './styles';
-
-type PokemonType = {
-  type: string;
-};
-
-type Pokemon = {
-  name: string;
-  url: string;
-  id: number;
-  types: PokemonType[];
-};
+import { Pokemon } from '../../components/Card';
+import { PokemonType } from '../../components/Card';
 
 type Request = {
   id: number;

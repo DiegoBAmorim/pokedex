@@ -9,17 +9,20 @@ import {
   PokemonType,
   PokemonTypeText,
   RightSide,
+  PokemonImage,
+  PokeballDetail,
 } from './styles';
 
 import dotsImage from '../../assets/items/dots.png';
+import pokeballImage from '../../assets/items/pokeballCard.png';
 
-type PokemonType = {
+export type PokemonType = {
   type: {
     name: string;
   };
 };
 
-type Pokemon = {
+export type Pokemon = {
   name: string;
   url: string;
   id: number;
@@ -36,16 +39,23 @@ export function Card({ data, ...rest }: Props) {
       <LeftSide>
         <PokemonId>#{data.id}</PokemonId>
         <PokemonName>{data.name}</PokemonName>
-        <ImageCardDetailLeftSide source={dotsImage}></ImageCardDetailLeftSide>
-        {data.types.map(pokemonType => (
-          <PokemonContentType>
-            <PokemonType type={pokemonType.type.name}>
+        <ImageCardDetailLeftSide source={dotsImage} />
+        <PokemonContentType>
+          {data.types.map((pokemonType, i) => (
+            <PokemonType type={pokemonType.type.name} key={i}>
               <PokemonTypeText>{pokemonType.type.name}</PokemonTypeText>
             </PokemonType>
-          </PokemonContentType>
-        ))}
+          ))}
+        </PokemonContentType>
       </LeftSide>
-      <RightSide></RightSide>
+      <RightSide>
+        <PokeballDetail source={pokeballImage} />
+        <PokemonImage
+          source={{
+            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+          }}
+        />
+      </RightSide>
     </Container>
   );
 }

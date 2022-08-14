@@ -60,7 +60,7 @@ export const PokemonType = styled.View<PokemonType>`
 `;
 
 export const PokemonTypeText = styled.Text`
-   ${({ theme, type }) => css`
+   ${({ theme }) => css`
    font-weight: 500;
    font-size: 12px;
    line-height: 14px;
@@ -80,4 +80,21 @@ export const ImageCardDetailLeftSide = styled.Image`
 
 
 
-export const RightSide = styled.View``;
+export const RightSide = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: relative;
+`;
+
+export const PokemonImage = styled.Image`
+  margin-top: -40px;
+  width: 130px;
+  height: 130px;
+
+`;
+
+export const PokeballDetail = styled.Image`
+ position: absolute;
+ right: -20px;
+`;
