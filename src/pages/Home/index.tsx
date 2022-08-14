@@ -7,6 +7,7 @@ import api from '../../services/api';
 import { Container, List } from './styles';
 import { Pokemon } from '../../components/Card';
 import { PokemonType } from '../../components/Card';
+import { FadeAnimation } from '../../components/FadeAnimation';
 
 type Request = {
   id: number;
@@ -50,17 +51,17 @@ const Home: React.FC = () => {
     };
   };
   return (
-    <>
-      <Container>
-        <Menu />
-        {loading === true && <ActivityIndicator />}
-        <List
-          data={pokemons}
-          keyExtractor={(pokemon: any) => String(pokemon.id.toString())}
-          renderItem={({ item }: any) => <Card data={item} />}
-        />
-      </Container>
-    </>
+    <Container>
+      <List
+        data={pokemons}
+        keyExtractor={(pokemon: any) => String(pokemon.id.toString())}
+        renderItem={({ item }: any) => (
+          <FadeAnimation>
+            <Card data={item} />
+          </FadeAnimation>
+        )}
+      />
+    </Container>
   );
 };
 
