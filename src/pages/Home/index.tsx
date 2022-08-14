@@ -23,7 +23,7 @@ type Request = {
 };
 
 const Home: React.FC = () => {
-  const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
         };
       }),
     );
-    setPokemon(payloadPokemons);
+    setPokemons(payloadPokemons);
   };
 
   const getMoreInfo = async (url: string): Promise<Request> => {
@@ -64,9 +64,9 @@ const Home: React.FC = () => {
         <Menu />
         {loading === true && <ActivityIndicator />}
         <List
-          data={pokemon}
-          keyExtractor={(item: any) => String(item.name)}
-          renderItem={({ item }: any) => <Card />}
+          data={pokemons}
+          keyExtractor={(pokemon: any) => String(pokemon.id.toString())}
+          renderItem={({ item }: any) => <Card data={item} />}
         />
       </Container>
     </>

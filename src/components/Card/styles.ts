@@ -53,7 +53,7 @@ export const PokemonType = styled.View<PokemonType>`
     border-radius: 3px;
     margin-left: 5px;
     margin-top: 5px;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 
   `}
@@ -71,9 +71,11 @@ export const PokemonTypeText = styled.Text`
 
 export const ImageCardDetailLeftSide = styled.Image`
   position:absolute;
-  width: 32px;
+  width: 74px;
+  height: 32px;
   left: 90px;
   top: -10px;
+
 `;
 
 

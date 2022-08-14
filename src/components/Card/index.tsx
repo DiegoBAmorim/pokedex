@@ -11,6 +11,8 @@ import {
   RightSide,
 } from './styles';
 
+import dotsImage from '../../assets/items/dots.png';
+
 type PokemonType = {
   type: {
     name: string;
@@ -30,16 +32,18 @@ type Props = {
 
 export function Card({ data, ...rest }: Props) {
   return (
-    <Container type="poison" {...rest}>
+    <Container type={data.types[0].type.name} {...rest}>
       <LeftSide>
-        <PokemonId></PokemonId>
-        <PokemonName></PokemonName>
-        <ImageCardDetailLeftSide source={{ uri: '' }}></ImageCardDetailLeftSide>
-        <PokemonContentType>
-          <PokemonType type="poison">
-            <PokemonTypeText></PokemonTypeText>
-          </PokemonType>
-        </PokemonContentType>
+        <PokemonId>#{data.id}</PokemonId>
+        <PokemonName>{data.name}</PokemonName>
+        <ImageCardDetailLeftSide source={dotsImage}></ImageCardDetailLeftSide>
+        {data.types.map(pokemonType => (
+          <PokemonContentType>
+            <PokemonType type={pokemonType.type.name}>
+              <PokemonTypeText>{pokemonType.type.name}</PokemonTypeText>
+            </PokemonType>
+          </PokemonContentType>
+        ))}
       </LeftSide>
       <RightSide></RightSide>
     </Container>
