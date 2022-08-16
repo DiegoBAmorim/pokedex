@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, ScrollView } from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -25,6 +30,12 @@ import {
   DotsImage,
   Container,
   Title,
+  StatusBar,
+  Attribute,
+  AttributeValue,
+  ContentBar,
+  ProgressBar,
+  Ability,
 } from './styles';
 
 type RouteParams = {
@@ -32,7 +43,7 @@ type RouteParams = {
 };
 
 type Stats = {
-  base_stats: number;
+  base_stat: number;
   stat: {
     name: string;
   };
@@ -143,8 +154,34 @@ const Details: React.FC = () => {
 
             <DotsImage source={dotsImage} />
           </Header>
+
           <Container>
             <Title type={pokemon.types[0].type.name}>Base States</Title>
+            {pokemon.stats.map(attribute => (
+              <StatusBar key={attribute.stat.name}>
+                <Attribute>{attribute.stat.name}</Attribute>
+                <AttributeValue>{attribute.base_stat}</AttributeValue>
+
+                <ContentBar>
+                  <ProgressBar
+                    type={pokemon.types[0].type.name}
+                    borderWidth={0}
+                    progress={100}
+                    width={attribute.base_stat}
+                    color={pokemon.color}
+                    borderColor={pokemon.color}
+                  />
+                </ContentBar>
+              </StatusBar>
+            ))}
+
+            <Title type={pokemon.types[0].type.name}>Abilities</Title>
+
+            {pokemon.abilities.map(currentAbility => (
+              <Ability key={currentAbility.ability.name}>
+                {currentAbility.ability.name}
+              </Ability>
+            ))}
           </Container>
         </ScrollView>
       )}

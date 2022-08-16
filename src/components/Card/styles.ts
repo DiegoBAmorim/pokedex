@@ -6,7 +6,7 @@ type PokemonType = {
 
 export const Container = styled.TouchableOpacity<PokemonType>`
   ${({ theme, type }) => css`
-  background: ${theme.colors.backgroundCard[type]}
+    background: ${theme.colors.backgroundCard[type]}
     border-radius: 10px;
     margin-top: 30px;
     flex-direction: row;

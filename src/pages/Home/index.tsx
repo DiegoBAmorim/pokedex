@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { Card, Pokemon, PokemonType } from '../../components/Card';
+import { Menu } from '../../components/Menu';
+import { Header } from '../../components/Header';
 
 import pokeballHeader from '../../assets/items/pokeball.png';
 import api from '../../services/api';
 
-import { Container, Header, List, Title } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { Container, List } from './styles';
 
 type Request = {
   id: number;
@@ -23,7 +25,7 @@ const Home: React.FC = () => {
   }, []);
 
   const navigationPage = (pokemonId: number) => {
-    navigate('Details', { pokemonId });
+    navigate('Details' as never, { pokemonId } as never);
   };
 
   const getPokemon = async () => {
@@ -57,12 +59,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <List
-        ListHeaderComponent={
-          <>
-            <Header source={pokeballHeader} />
-            <Title>Pokedex</Title>
-          </>
-        }
+        ListHeaderComponent={<Header />}
         data={pokemons}
         contentContainerStyle={{ paddingHorizontal: 20 }}
         keyExtractor={(pokemon: any) => String(pokemon.name)}

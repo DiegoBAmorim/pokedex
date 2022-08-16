@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components/native';
 
-import { TypeName } from '.'
+import { TypeName } from '.';
+
+import * as Progress from 'react-native-progress';
 
 type TypeProps = {
-    type: TypeName
+  type: TypeName
 }
 
 export const Header = styled.View<TypeProps>`
@@ -118,7 +120,59 @@ export const Title = styled.Text<TypeProps>`
   font-size: 16px;
   line-height: 19px;
   padding: 20px;
-  color: ${theme.colors.boxType[type]}
+  color: ${theme.colors.boxType[type]};
 `}`;
 
+export const StatusBar = styled.View`
+ width: 100%;
+ padding: 10px 20px;
+ flex-direction: row;
+ align-items: center;
+
+`;
+
+export const Attribute = styled.Text`
+  ${({ theme, }) => css`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  width: 110px;
+  text-transform: capitalize;
+  color: ${theme.colors.light_text};
+  `};
+`;
+
+export const AttributeValue = styled.Text`
+  ${({ theme, }) => css`
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    text-transform: capitalize;
+    color: ${theme.colors.detail};
+    margin-left: 20px;
+  `};
+
+`;
+
+export const ContentBar = styled.View`
+  margin-left: 20px;
+`;
+
+export const ProgressBar = styled(Progress.Bar) <TypeProps>``;
+
+export const Ability = styled.Text`
+  ${({ theme, }) => css`
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    color: ${theme.colors.detail};
+  `};
+
+`;
 
