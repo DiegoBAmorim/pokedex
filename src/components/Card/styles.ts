@@ -46,7 +46,7 @@ export const PokemonContentType = styled.View`
 
 export const PokemonType = styled.View<PokemonType>`
   ${({ theme, type }) => css`
-    background: ${theme.colors.boxType[type]};
+    background: ${theme.colors?.boxType[type]};
     padding: 5px;
     width: 65px;
     height: 25px;

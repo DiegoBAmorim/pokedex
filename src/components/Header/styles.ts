@@ -10,7 +10,6 @@ export const Container = styled.ImageBackground`
     height: 200px;
     background: ${theme.colors.background}
     margin-left: -20px;
-    border: 1px solid red;
   `}
 `;
 

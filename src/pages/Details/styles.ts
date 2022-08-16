@@ -91,6 +91,7 @@ export const PokemonTypeText = styled.Text`
     font-size: 12px;
     line-height: 14px;
     font-style: normal;
+    text-transform: capitalize;
   `}
 `;
 
