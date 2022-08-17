@@ -75,4 +75,4 @@ O aplicativo Pokedex tem a finalidade de listar e informar detalhes dos pokemons
 
 ---
 
-Este projeto esta sobe a licença MIT.
+Este projeto esta sob a licença MIT.
