@@ -18,8 +18,10 @@ Para o desenvolvimento foi utilizado **React Native**, **Expo** e **TypeScript**
 
 ## [](https://github.com/BrunoSaibert/pokedex-react-native#-%EF%B8%8F-funcionalidades) ⚙️ Funcionalidades
 
-- Listar pokemons
-- Consultar os dados de cada pokemon
+- Listar pokemons.
+- Consultar os dados de cada pokemon.
+- Consultar evoluções de pokemon.
+- Consultar numero na pokedex.
 
 ---
 
